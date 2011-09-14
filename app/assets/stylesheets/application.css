@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+body{
+ background-color: #f0f0f0;
+}
+.header{
+  height:100px;
+/*  background-color:#0063a6;*/
+/* background-color:#0090d2;*/
+/*background-color:#7c82b3;*/
+background-color: #a0a8e5;
+
+}
+div.main-content{
+    margin-top: 10px;
+}
+/* For managing sticky footer */
+* {
+margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrapper{
+-moz-box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+	box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.wrapper {
+  min-height: 90%;
+  background-color: white;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -40px;
+}
+.footer, .push {
+  height: 40px;
+  clear: both;
+  
+}
+.footer{
+
+}
