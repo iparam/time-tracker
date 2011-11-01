@@ -28,7 +28,7 @@ gem "sorcery"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 group :development do
- gem 'mongrel'
+ gem 'mongrel', '>= 1.2.0.pre2'
 end
 group :test do
   # Pretty printed test output
