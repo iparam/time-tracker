@@ -21,18 +21,18 @@
       </ul>
     </div>
     <div class="menu-bar">
-      <ul>
-        <li> <%= link_to "Sign up", signup_path %></li>
-        <li> <%= link_to "Sign up", signup_path %></li>
+      <ul class="active_class">
+        <li> <%= link_to "Home", root_path,:class=>current_class("home") %></li>
+        <li> <%= link_to "Sign up", signup_path,:class=>current_class("users") %></li>
       </ul>
     </div>
     <div class="active-line1"></div>
   </div>
   <div class="content grid_16">
-    <div class="main-content grid_12">
+    <div class="main-content <%=main_content_css_class %>">
       <%= yield %>
     </div>
-    <div class="sidebar grid_4">
+    <div class="sidebar <%=sidebar_css_class %>">
       ddd
       <%= yield :sidebar %>
     </div>
