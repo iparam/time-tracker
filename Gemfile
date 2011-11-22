@@ -19,7 +19,7 @@ end
 gem 'jquery-rails'
 #gem "sorcery"
 gem "devise", "1.5.0"
-
+gem "haml-rails"
 # Use unicorn as the web server
 # gem 'unicorn'
 
