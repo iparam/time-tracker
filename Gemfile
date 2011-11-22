@@ -17,7 +17,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem "sorcery"
+#gem "sorcery"
+gem "devise", "1.5.0"
 
 # Use unicorn as the web server
 # gem 'unicorn'

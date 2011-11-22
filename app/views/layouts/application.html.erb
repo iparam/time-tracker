@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TimeTracker</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div class="wrapper container_16">
-  <div class="header">
-    <div class="login">
-      <ul>
-        <% if current_user %>
-          <li>Logged in as <%= current_user.email %></li>
-          <li><%= link_to "Log out", logout_path %></li>
-        <% else %>
-          <li> <%= link_to "Sign up", signup_path %></li> |
-          <li><%= link_to "log in", login_path %></li>
-        <% end %>
-      </ul>
+  <head>
+    <title>TimeTracker</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="wrapper container_16">
+      <div class="header">
+        <div class="login">
+          <ul>
+            <% if current_user %>
+              <li>Logged in as <%= current_user.email %></li>
+              <li><%= link_to "Log out", destroy_user_session_path, :method => "DELETE" %></li>
+            <% else %>
+              <li> <%= link_to "Sign up", new_user_registration_path %></li> |
+              <li><%= link_to "log in", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="menu-bar">
+          <ul class="active_class">
+            <li> <%= link_to "Home", root_path,:class=>current_class("home") %></li>
+            <li> <%= link_to "Sign up", new_user_registration_path,:class=>current_class("users") %></li>
+          </ul>
+        </div>
+        <div class="active-line1"></div>
+      </div>
+      <div class="content grid_16">
+        <div class="main-content <%=main_content_css_class %>">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+        <div class="sidebar <%=sidebar_css_class %>">
+          <%= yield :sidebar %>
+        </div>
+      </div>
+      <%= clearing_span %>
+      <div class="push"></div>
     </div>
-    <div class="menu-bar">
-      <ul class="active_class">
-        <li> <%= link_to "Home", root_path,:class=>current_class("home") %></li>
-        <li> <%= link_to "Sign up", signup_path,:class=>current_class("users") %></li>
-      </ul>
+    <div class="container_16 footer">
+      Footer
     </div>
-    <div class="active-line1"></div>
-  </div>
-  <div class="content grid_16">
-    <div class="main-content <%=main_content_css_class %>">
-      <%= yield %>
-    </div>
-    <div class="sidebar <%=sidebar_css_class %>">
-      ddd
-      <%= yield :sidebar %>
-    </div>
-  </div>
-  <%= clearing_span %>
-  <div class="push"></div>
-</div>
-<div class="container_16 footer">
-  Footer
-</div>
-</body>
+  </body>
 </html>
