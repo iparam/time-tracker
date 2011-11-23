@@ -18,7 +18,10 @@ end
 
 gem 'jquery-rails'
 #gem "sorcery"
-gem "devise", "1.5.0"
+gem "haml"
+gem "devise"
+gem "hpricot"
+gem "ruby_parser"
 gem "haml-rails"
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -30,6 +33,14 @@ gem "haml-rails"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 group :development do
  gem 'mongrel', '>= 1.2.0.pre2'
+end
+group :development, :test do
+  gem "rspec"
+  gem "rspec-rails"
+  gem "database_cleaner"
+  gem 'machinist', '>= 2.0.0.beta2'
+  gem "ZenTest"
+  gem 'factory_girl_rails'
 end
 group :test do
   # Pretty printed test output

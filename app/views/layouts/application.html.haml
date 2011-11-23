@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title TimeTracker
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .wrapper.container_16
+      .header
+        .login
+          %ul
+            - if current_user
+              %li
+                Logged in as #{current_user.email}
+              %li= link_to "Log out", destroy_user_session_path, :method => "DELETE"
+            - else
+              %li
+                = link_to "Sign up", new_user_registration_path
+              |
+              %li= link_to "log in", new_user_session_path
+        .menu-bar
+          %ul.active_class
+            %li
+              = link_to "Home", root_path,:class=>current_class("home")
+            %li
+              = link_to "Sign up", new_user_registration_path,:class=>current_class("users")
+        .active-line1
+      .content.grid_16
+        %div{:class => "main-content #{main_content_css_class}"}
+          %p.notice= notice
+          %p.alert= alert
+          = yield
+        %div{:class => "sidebar #{sidebar_css_class}"}
+          = yield :sidebar
+      = clearing_span
+      .push
+    .container_16.footer
+      Footer
