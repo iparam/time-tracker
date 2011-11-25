@@ -19,10 +19,12 @@ end
 gem 'jquery-rails'
 #gem "sorcery"
 gem "haml"
+gem "haml-rails"
 gem "devise"
 gem "hpricot"
 gem "ruby_parser"
-gem "haml-rails"
+gem "cancan"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -31,9 +33,14 @@ gem "haml-rails"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
 group :development do
  gem 'mongrel', '>= 1.2.0.pre2'
+#gem 'annotate', '2.4.1.beta1'
+gem 'annotate', 
+:git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 end
+
 group :development, :test do
   gem "rspec"
   gem "rspec-rails"
@@ -41,6 +48,7 @@ group :development, :test do
   gem 'machinist', '>= 2.0.0.beta2'
   gem "ZenTest"
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 group :test do
   # Pretty printed test output

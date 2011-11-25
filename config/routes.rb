@@ -1,13 +1,25 @@
 TimeTracker::Application.routes.draw do
-  
-  devise_for :users
+  resources :time_entries
 
+  resources :tasks
+
+  resources :projects
+
+  resources :clients
+
+  resources :accounts 
+
+    root :to => 'home#index'
+  devise_for :users do
+		get "login", :to => "devise/sessions#new"
+		get "logout", :to => "devise/sessions#destroy"
+	end
 #  get "logout" => "sessions#destroy", :as => "logout"
 #  get "login" => "sessions#new", :as => "login"
 #  get "signup" => "users#new", :as => "signup"
 #  resources :users
 #  resources :sessions
-  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

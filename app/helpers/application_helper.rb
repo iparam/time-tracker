@@ -35,7 +35,9 @@ module ApplicationHelper
 		classes = {
 						'home' => 'home',
 						"sessions.new"=>"login",
-						"users"=>"users"
+						"users"=>"users",
+            "clients"=>"clients",
+            "projects"=> "projects"
 		}
 		classes[controller.controller_name + '.' + controller.action_name] || classes[controller.controller_name] || ''
 		

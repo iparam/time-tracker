@@ -1,0 +1,20 @@
+%h1 Listing Projects
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @tasks.each do |client|
+    %tr
+      %td= project.name
+      %td= project.description
+      %td= link_to 'Show', task
+      %td= link_to 'Edit', edit_task_path(task)
+      %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Time entry', new_task_path

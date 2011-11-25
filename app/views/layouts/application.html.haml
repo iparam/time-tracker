@@ -13,18 +13,25 @@
             - if current_user
               %li
                 Logged in as #{current_user.email}
-              %li= link_to "Log out", destroy_user_session_path, :method => "DELETE"
+              %li= link_to "Log out", logout_path
             - else
               %li
-                = link_to "Sign up", new_user_registration_path
+                = link_to "Sign up",new_account_path
               |
-              %li= link_to "log in", new_user_session_path
+              %li= link_to "log in", login_path
         .menu-bar
           %ul.active_class
             %li
               = link_to "Home", root_path,:class=>current_class("home")
-            %li
-              = link_to "Sign up", new_user_registration_path,:class=>current_class("users")
+            - if current_user
+              %li
+                =# link_to "Account", account_path(current_user.account),:class=>current_class("users")
+              %li
+                = link_to "Client", clients_path,:class=>current_class("clients")
+                = link_to "Project", projects_path,:class=>current_class("projects")
+            -else
+              %li
+                = link_to "Sign up", new_account_path,:class=>current_class("users")
         .active-line1
       .content.grid_16
         %div{:class => "main-content #{main_content_css_class}"}
