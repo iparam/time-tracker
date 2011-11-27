@@ -3,7 +3,12 @@
   %head
     %title TimeTracker
     = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "jquery.ui.datepicker"
+    = stylesheet_link_tag    "datepicker"
     = javascript_include_tag "application"
+    = javascript_include_tag "jquery.ui.core"
+    = javascript_include_tag "jquery.ui.widget"
+    = javascript_include_tag "jquery.ui.datepicker"
     = csrf_meta_tags
   %body
     .wrapper.container_16
@@ -16,7 +21,7 @@
               %li= link_to "Log out", logout_path
             - else
               %li
-                = link_to "Sign up",new_account_path
+                = link_to "Sign up", new_account_path
               |
               %li= link_to "log in", login_path
         .menu-bar
@@ -27,8 +32,10 @@
               %li
                 =# link_to "Account", account_path(current_user.account),:class=>current_class("users")
               %li
+                = link_to "Account", accounts_path,:class=>current_class("accounts")
                 = link_to "Client", clients_path,:class=>current_class("clients")
                 = link_to "Project", projects_path,:class=>current_class("projects")
+                = link_to "Task", tasks_path,:class=>current_class("tasks")
             -else
               %li
                 = link_to "Sign up", new_account_path,:class=>current_class("users")

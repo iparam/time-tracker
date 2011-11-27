@@ -20,4 +20,13 @@ class Project < ActiveRecord::Base
   has_many :tasks
   belongs_to :client
   belongs_to :manager,:class_name => "User",:foreign_key => "manager_id"
+
+  validates :name, :manager_id, :start_date, :end_date,:client_id, :presence => true
+  validate :start_and_end_date_range
+
+  private
+  def start_and_end_date_range
+    errors.add(:start_date, "can't be greater then end date") if (self.start_date.present? && self.end_date.present?) && self.start_date > self.end_date
+  end
+
 end

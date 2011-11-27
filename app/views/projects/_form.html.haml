@@ -20,20 +20,22 @@
     = f.text_field :hourly_rate
   
   .field
-    = f.label :client
-    = f.collection_select :hourly_rate 
-
-  .field
     = f.label :estimated_hour
-    = f.text_field :estimated_budget
+    = f.text_field :estimated_hour
   .field
     = f.label :start_date
-    = f.date_select :start_date
-    .clear
-
-
+    = f.text_field :start_date, :class=>"datepicker", :readonly  => true
   .field
     = f.label :end_date
-    = f.date_select :end_date
+    = f.text_field :end_date, :class=>"datepicker", :readonly  => true
+  .field
+    = f.label :manager_id
+    = collection_select(:project, :manager_id, User.all, :id, :email, {:prompt => 'Please select manager for the project'})
+    .clear
+  .field
+    = f.label :client_id
+    = collection_select(:project, :client_id, Client.all, :id, :name, {:prompt => 'Please select client for the project'})
+    .clear
+
   .actions
     = f.submit 'Save'

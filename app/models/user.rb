@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:account_id
 	belongs_to :account
+  has_many :tasks
 end

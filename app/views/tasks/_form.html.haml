@@ -1,7 +1,7 @@
-= form_for @task do |f|
+= form_for(@task, :html=>{:class=>"data-form"}) do |f|
   -if @task.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this time_entry from being saved:"
+      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
       %ul
         - @task.errors.full_messages.each do |msg|
           %li= msg
@@ -12,5 +12,32 @@
   .field
     = f.label :description
     = f.text_field :description
+  .field
+    = f.label :assigned_to
+    = collection_select(:task, :assigned_id, User.all, :id, :email, {:prompt => 'Please select assignee for the task'})
+    .clear
+  .field
+    = f.label :start_date
+    = f.text_field :start_date, :class=>"datepicker", :readonly  => true
+  .field
+    = f.label :end_date
+    = f.text_field :end_date, :class=>"datepicker", :readonly  => true
+  .field
+    = f.label :estimated_hour
+    = f.text_field :estimated_hour
+  .field
+    = f.label :total_hour
+    = f.text_field :total_hour
+  .field
+    = f.label :project_id
+    = collection_select(:task, :project_id, Project.all, :id, :name, {:prompt => 'Please select project for the task'})
+    .clear
+  .field
+    = f.label :category
+    = f.select(:category, ['To-Do','Appoinment'], {}, {})
+
+
+    .clear
+
   .actions
     = f.submit 'Save'

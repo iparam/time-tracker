@@ -1,8 +1,17 @@
 %h1 Listing Projects
+.field
+  .clear
 %table.listing
   %tr
     %th Name
     %th Description
+    %th Estimated budget
+    %th Hourly rate
+    %th Estimated hour
+    %th Start Date
+    %th End Date
+    %th Manager
+    %th Client
     %th
     %th
     %th
@@ -11,10 +20,17 @@
     %tr
       %td= project.name
       %td= project.description
+      %td= project.estimated_budget
+      %td= project.hourly_rate
+      %td= project.estimated_hour
+      %td= project.start_date
+      %td= project.end_date
+      %td= project.manager.email
+      %td= project.client.name
       %td= link_to 'Show', project
       %td= link_to 'Edit', edit_project_path(project)
       %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Time entry', new_project_path
+= link_to 'New Project', new_project_path

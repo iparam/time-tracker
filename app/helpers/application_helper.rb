@@ -37,7 +37,9 @@ module ApplicationHelper
 						"sessions.new"=>"login",
 						"users"=>"users",
             "clients"=>"clients",
-            "projects"=> "projects"
+            "projects"=> "projects",
+            "tasks"=> "tasks",
+            "accounts"=>"accounts"
 		}
 		classes[controller.controller_name + '.' + controller.action_name] || classes[controller.controller_name] || ''
 		

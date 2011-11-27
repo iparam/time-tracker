@@ -1,4 +1,5 @@
 TimeTracker::Application.routes.draw do
+  
   resources :time_entries
 
   resources :tasks
