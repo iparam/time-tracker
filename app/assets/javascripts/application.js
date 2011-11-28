@@ -6,13 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
 
-$(function() {
-    $( ".datepicker" ).datepicker({
-        showOn: "button",
-        buttonImage: "images/calendar.gif",
-        buttonImageOnly: true
-    });
-});
+
 

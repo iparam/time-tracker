@@ -25,8 +25,8 @@
       %td= project.estimated_hour
       %td= project.start_date
       %td= project.end_date
-      %td= project.manager.email
-      %td= project.client.name
+      %td= project.manager.try(:email)
+      %td= project.client.try(:name)
       %td= link_to 'Show', project
       %td= link_to 'Edit', edit_project_path(project)
       %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
