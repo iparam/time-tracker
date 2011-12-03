@@ -21,8 +21,8 @@ class Project < ActiveRecord::Base
   belongs_to :client
   belongs_to :manager,:class_name => "User",:foreign_key => "manager_id"
 
-  validates :name, :manager_id, :start_date, :end_date,:client_id, :presence => true
-  validate :start_and_end_date_range
+  validates :name, :manager_id, :client_id, :presence => true
+  #validate :start_and_end_date_range
 
   private
   def start_and_end_date_range
