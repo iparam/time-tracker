@@ -40,17 +40,18 @@ body{
          font-size:16px;
          padding:7px 15px;
          -moz-border-radius: 15px;
-          /*border-radius: 15px 15px 0 0;*/
+          border-radius: 15px 15px 0 0;
           border-radius: 15px;
           margin:7px;
           color:cyan;
           text-decoration:none;
           /*background-color:blue;*/
-
+      
         }
         a:hover{
           background-color:rgba(0, 0, 0, 0.9);
         }
+          
         a:active,a.active{
           background-color:rgba(0, 0, 0, 0.9);
         }
@@ -65,6 +66,9 @@ body{
 
 div.main-content{
   margin-top: 10px;
+}
+.edit_link a:hover{
+background-color:#E7EEF4;
 }
 /*Form Css*/
 form.data-form p,form.data-form div { margin:0; padding: 10px 0 0 0;}

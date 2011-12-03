@@ -13,13 +13,12 @@
     %th Manager
     %th Client
     %th
-    %th
-    %th
-    %th
+    %th{:width=>"40px"}
+    
 
   - @projects.each do |project|
     %tr
-      %td= project.name
+      %td= link_to project.name,project
       %td= project.description
       %td= project.estimated_budget
       %td= project.hourly_rate
@@ -28,10 +27,10 @@
       %td= project.end_date
       %td= project.manager.try(:email)
       %td= project.client.try(:name)
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
       %td= link_to 'Add Task', new_task_path(:project => project)
+      %td.edit_link 
+        = link_to image_tag('edit_10.png',:border => 0), edit_project_path(project)
+        = link_to image_tag('delete_10.png',:border => 0), project, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

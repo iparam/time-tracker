@@ -1,20 +1,18 @@
 %h1 Listing Client
 
-%table
+%table.listing
   %tr
     %th Name
     %th Description
-    %th
-    %th
-    %th
+    %th{:width=>"40px"}
 
   - @clients.each do |client|
     %tr
-      %td= client.name
+      %td= link_to client.name,client
       %td= client.description
-      %td= link_to 'Show', client
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
+      %td.edit_link 
+        = link_to image_tag('edit_10.png',:border => 0), edit_client_path(client)
+        = link_to image_tag('delete_10.png',:border => 0), client, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
