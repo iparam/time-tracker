@@ -14,7 +14,7 @@
     = f.text_field :description
   .field
     = f.label :assigned_to
-    = collection_select(:task, :assigned_id, User.all, :id, :email, {:prompt => 'Please select assignee for the task'})
+    = collection_select(:task, :assigned_id, User.all, :id, :full_name, {:prompt => 'Please select assignee for the task'})
     .clear
   .field
     = f.label :start_date
@@ -30,7 +30,7 @@
     = f.text_field :total_hour
   .field
     = f.label :project_id
-    = collection_select(:task, :project_id, Project.all, :id, :name, {:prompt => 'Please select project for the task'})
+    = collection_select(:task, :project_id, Project.all, :id, :name, {:prompt => 'Please select project for the task', :selected =>@project.present? ? @project.id : "" })
     .clear
   .field
     = f.label :category

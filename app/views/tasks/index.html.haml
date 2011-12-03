@@ -20,9 +20,9 @@
     %tr
       %td= task.name
       %td= task.description
-      %td= task.assignee.email
-      %td= task.start_date
-      %td= task.end_date
+      %td= task.assignee.full_name
+      %td= task.start_date.strftime("%d, %B %Y")
+      %td= task.end_date.strftime("%d, %B %Y")
       %td= task.estimated_hour
       %td= task.total_hour
       %td= task.project.try(:name)

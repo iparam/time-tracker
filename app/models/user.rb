@@ -19,12 +19,18 @@
 #
 
 class User < ActiveRecord::Base
+  after_create :set_full_name
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :registerable,
   devise :database_authenticatable,:recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,:account_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me,:account_id, :first_name, :middle_name, :last_name, :full_name
 	belongs_to :account
   has_many :tasks
+
+  def set_full_name
+    self.full_name = self.first_name + " "+ self.middle_name + " " +  self.last_name     
+    self.save
+  end
 end
