@@ -37,8 +37,8 @@ gem "cancan"
 group :development do
  gem 'mongrel', '>= 1.2.0.pre2'
 #gem 'annotate', '2.4.1.beta1'
-gem 'annotate', 
-:git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
+#gem 'annotate', 
+#:git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 end
 
 group :development, :test do
