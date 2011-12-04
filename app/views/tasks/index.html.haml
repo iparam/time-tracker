@@ -11,7 +11,6 @@
       %td= collection_select(:project, :id, Project.all, :id, :name, {:prompt => 'Please select Project'},:class => "search_tasks")
       %td= collection_select(:client, :id, Client.all, :id, :name, {:prompt => 'Please select Client'},:class => "search_tasks")
       %td= collection_select(:assignee, :id, User.all, :id, :full_name, {:prompt => 'Please select Assignee'},:class => "search_tasks")
-
 %div#task_table
   = render 'tasks'
 

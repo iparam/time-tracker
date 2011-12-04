@@ -11,9 +11,8 @@
   %th Total Hour
   %th Project
   %th Category
-  %th
-  %th
-  %th
+  %th{:width=>"40px"}
+
 
  - @tasks.each do |task|
   %tr
@@ -26,7 +25,7 @@
    %td= task.total_hour
    %td= task.project.try(:name)
    %td= task.category
-   %td= link_to 'Show', task
-   %td= link_to 'Edit', edit_task_path(task)
-   %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+   %td.edit_link
+    = link_to image_tag('edit_10.png',:border => 0), edit_task_path(task)
+    = link_to image_tag('delete_10.png',:border => 0), task, :confirm => 'Are you sure?', :method => :delete
 
