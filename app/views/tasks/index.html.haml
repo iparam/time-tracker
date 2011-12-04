@@ -1,34 +1,18 @@
 %h1 Listing Tasks
 .field
   .clear
-%table.listing
-  %tr
-    %th Name
-    %th Description
-    %th Assigned To
-    %th Start Date
-    %th End Date
-    %th Estimated Hour
-    %th Total Hour
-    %th Project
-    %th Category
-    %th{:width=>"40px"}
-
-  - @tasks.each do |task|
+%div.dropdowns
+  %table.listing
     %tr
-      %td= link_to task.name,task
-      %td= task.description
-      %td= task.assignee.full_name
-      %td= task.start_date.strftime("%d, %B %Y")
-      %td= task.end_date.strftime("%d, %B %Y")
-      %td= task.estimated_hour
-      %td= task.total_hour
-      %td= task.project.try(:name)
-      %td= task.category
-      %td.edit_link
-        = link_to image_tag('edit_10.png',:border => 0), edit_task_path(task)
-        = link_to image_tag('delete_10.png',:border => 0), task, :confirm => 'Are you sure?', :method => :delete
+      %th Project
+      %th Client
+      %th Assignee
+    %tr
+      %td= collection_select(:project, :id, Project.all, :id, :name, {:prompt => 'Please select Project'},:class => "search_tasks")
+      %td= collection_select(:client, :id, Client.all, :id, :name, {:prompt => 'Please select Client'},:class => "search_tasks")
+      %td= collection_select(:assignee, :id, User.all, :id, :full_name, {:prompt => 'Please select Assignee'},:class => "search_tasks")
 
-%br
+%div#task_table
+  = render 'tasks'
 
 = link_to 'New Task', new_task_path

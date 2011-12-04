@@ -1,0 +1,32 @@
+.field
+ .clear
+%table.listing
+ %tr
+  %th Name
+  %th Description
+  %th Assigned To
+  %th Start Date
+  %th End Date
+  %th Estimated Hour
+  %th Total Hour
+  %th Project
+  %th Category
+  %th
+  %th
+  %th
+
+ - @tasks.each do |task|
+  %tr
+   %td= task.name
+   %td= task.description
+   %td= task.assignee.full_name
+   %td= task.start_date.strftime("%d, %B %Y")
+   %td= task.end_date.strftime("%d, %B %Y")
+   %td= task.estimated_hour
+   %td= task.total_hour
+   %td= task.project.try(:name)
+   %td= task.category
+   %td= link_to 'Show', task
+   %td= link_to 'Edit', edit_task_path(task)
+   %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+

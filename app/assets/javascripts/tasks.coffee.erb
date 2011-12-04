@@ -8,5 +8,13 @@ $ ->
     buttonImage: "<%= asset_path('calendar.gif')%>",
     buttonImageOnly: true
    })
+  
+$ ->
+  $('.search_tasks').change ->
+    $.get "/tasks",
+          id : $("#"+this.id).val(),
+          type : this.id.split('_')[0],
+          format : "js"
+          
 
-
+           
