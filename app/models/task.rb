@@ -21,9 +21,9 @@ class Task < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :assignee,:class_name => "User",:foreign_key => "assigned_id"
-  scope :by_project,lambda{|project_id| where(:project_id => project_id) if project_id}
-  scope :by_client,lambda{|client_id| joins(:project).where("projects.client_id = ?",client_id) if client_id }
-  scope :by_assignee,lambda{|assignee_id| where(:user_id=>assignee_id) if assignee_id}
+  scope :by_project,lambda{|project_id| where(:project_id => project_id) unless project_id.blank?}
+  scope :by_client,lambda{|client_id| joins(:project).where("projects.client_id = ?",client_id) unless client_id.blank? }
+  scope :by_assignee,lambda{|assignee_id| where(:user_id=>assignee_id) unless assignee_id.blank?}
 
   validates :name, :assigned_id,  :project_id, :presence => true
   #validate :start_and_end_date_range

@@ -12,21 +12,7 @@ class TasksController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @tasks }
       format.js {
-        if params[:id].present?
-          if params[:type] == "project"
-            @tasks = Task.find_all_by_project_id(params[:id])
-          elsif params[:type] == "assignee"
-            @tasks = Task.find_all_by_assigned_id(params[:id])
-          else
-            @tasks = []
-            Client.find(params[:id]).projects.each do |proj|
-              @tasks << proj.tasks
-            end
-            @tasks.flatten!.uniq!
-          end
-        else
-          @tasks = Task.all
-        end
+      
       }
     end
   end
