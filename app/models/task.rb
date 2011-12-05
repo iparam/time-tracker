@@ -22,8 +22,8 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :assignee,:class_name => "User",:foreign_key => "assigned_id"
 
-  validates :name, :assigned_id, :start_date, :end_date, :project_id, :presence => true
-  validate :start_and_end_date_range
+  validates :name, :assigned_id,  :project_id, :presence => true
+  #validate :start_and_end_date_range
 
   def add_user
     self.user = User.first
