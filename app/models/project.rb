@@ -20,9 +20,12 @@ class Project < ActiveRecord::Base
   has_many :tasks
   belongs_to :client
   belongs_to :manager,:class_name => "User",:foreign_key => "manager_id"
-
   validates :name, :manager_id, :client_id, :presence => true
   #validate :start_and_end_date_range
+
+  def account
+    self.client.account
+  end
 
   private
   def start_and_end_date_range

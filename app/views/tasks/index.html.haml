@@ -2,16 +2,12 @@
 .field
   .clear
 %div.dropdowns
-  %table.listing
-    %tr
-      %th Project
-      %th Client
-      %th Assignee
-    %tr
-      %td= collection_select(:project, :id, Project.all, :id, :name, {:prompt => 'Please select Project'},:class => "search_tasks")
-      %td= collection_select(:client, :id, Client.all, :id, :name, {:prompt => 'Please select Client'},:class => "search_tasks")
-      %td= collection_select(:assignee, :id, User.all, :id, :full_name, {:prompt => 'Please select Assignee'},:class => "search_tasks")
-%div#task_table
+  = form_tag(tasks_path,:remote=>true,:method=>:get,:id=>"task_search") do
+    = select_tag(:project,options_from_collection_for_select(@projects, "id", "name"), {:prompt => 'Please select Project',:class => "search_tasks"})
+    = select_tag(:client, options_from_collection_for_select(@clients, "id", "name"), {:prompt => 'Please select Client',:class => "search_tasks"})
+    = select_tag(:assignee, options_from_collection_for_select(@users, "id", "full_name"),  {:prompt => 'Please select Assignee',:class => "search_tasks"})
+   
+%div#task_listing
   = render 'tasks'
 
 = link_to 'New Task', new_task_path

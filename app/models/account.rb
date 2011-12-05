@@ -19,6 +19,8 @@ class Account < ActiveRecord::Base
 	belongs_to :owner,:class_name => "User",:foreign_key => "owner_id"
   has_many :users
   has_many :clients
+  has_many :projects,:through=>:clients
+  has_many :tasks,:through=>:projects
   accepts_nested_attributes_for :users, :reject_if => :all_blank,:allow_destroy => true
 
   def after_create

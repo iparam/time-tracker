@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
-  before_filter :authenticate_user!
-#	before_filter :require_login
-#	def not_authenticated
-#		redirect_to login_url, :alert => "First login to access this page."
-#	end
+  before_filter :authenticate_user!,:load_account
+
+  def load_account
+    @account ||= current_user.account if current_user
+  end
 end

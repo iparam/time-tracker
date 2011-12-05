@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+  account = Account.create(:name=>"Param")
+  user =account.users.create(:email=>"iparamtech@gmail.com",:password=>"admin123":password_confirmation=>"admin123"
+  client = account.clients.create(:name=>"First Client")
+  project  = client.projects.create(:

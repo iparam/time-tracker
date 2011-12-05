@@ -30,11 +30,11 @@
     = f.text_field :end_date, :class=>"datepicker", :readonly  => true
   .field
     = f.label :manager_id
-    = collection_select(:project, :manager_id, User.all, :id, :email, {:prompt => 'Please select manager for the project'})
+    = collection_select(:project, :manager_id, @users, :id, :email, {:prompt => 'Please select manager for the project'})
     .clear
   .field
     = f.label :client_id
-    = collection_select(:project, :client_id, Client.all, :id, :name, {:prompt => 'Please select client for the project'})
+    = collection_select(:project, :client_id, @clients, :id, :name, {:prompt => 'Please select client for the project'})
     .clear
 
   .actions
